@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-6" ng-controller="postsCtrl">
+        <form class="form-horizontal" name="articleEditForm">
+            <fieldset>
+                <h4>Edit Post</h4>
+                <div class="form-group">
+                    <label for="inputTitle" class="col-lg-2 control-label">Title</label>
+                    <div>
+                        <input ng-model="post.title" type="text" class="form-control" id="inputTitle"
+                               placeholder="Title" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputUrl" class="col-lg-2 control-label">Title</label>
+                    <div>
+                        <input ng-model="post.url" type="text" class="form-control" id="inputUrl" placeholder="Url"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Description</label>
+                    <div>
+                        <textarea ng-model="post.body" class="form-control" id="textArea" rows="3"
+                                  placeholder="Description" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button ng-disabled="articleEditForm.$invalid" ng-click="edit(post, articleForm)" type="submit"
+                                class="btn btn-success">EDIT POST
+                        </button>
+                        <a href="#/" class="btn btn-default">BACK</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-6">
+        <div class="card" style="margin-top:60px; width:15rem;">
+            <img class="card-img-top" src={{post.url}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">{{post.body}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
