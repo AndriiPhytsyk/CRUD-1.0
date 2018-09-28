@@ -23,20 +23,6 @@ module.exports = {
 
     let article = {title,url,description,id};
 
-    if(!title) {
-      return res.badRequest({err: "invalid title"})
-    }
-    if(!url) {
-      return res.badRequest({err: "invalid url"})
-    }
-    if(!description) {
-      return res.badRequest({err: "invalid description"})
-    }
-    if(!title) {
-      return res.badRequest({err: "invalid title"})
-    }
-
-
     Articles.update({id}, article)
       .then(data => {
       return res.ok(data);

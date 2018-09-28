@@ -41,28 +41,30 @@ myApp.controller("editCtrl", function ($scope, $http, $routeParams, $location) {
         .then(function (response) {
             $scope.post = response.data[0];
         });
-    $scope.edit = function (article) {
-        console.log(article)
-        //article = JSON.stringify(article);
-        $http.put(`http://localhost:1337/list/${article.id}`, article).then(function (data) {
-            console.log(data)
-            $location.path("/")
-        });
+    $scope.edit = function (article, articleForm) {
 
+        if(articleForm.$invalid) {
+            let msg = document.querySelector("#msg");
+            console.log(msg);
+            msg.innerText = "Please fill all fields"
+        } else {
+            $http.put(`http://localhost:1337/list/${article.id}`, article).then(function (data) {
+                console.log(data)
+                $location.path("/")
+            });
+        }
     }
 });
 
 myApp.controller("createCtrl", function ($scope, $http, $location) {
-    $scope.save = function (article) {
-
-        if(!article || !article.title || !article.description || !article.url) {
+    $scope.save = function (article, articleForm) {
+        console.log(articleForm);
+        if(articleForm.$invalid) {
             let msg = document.querySelector("#msg");
-            console.log(msg)
             msg.innerText = "Please fill all fields"
         } else {
-
-        console.log("article", article);
-        $http.post('http://localhost:1337/list', article).then(function () {
+        $http.post('http://localhost:1337/list', article).then(function (response) {
+            console.log(response)
             $location.path("/")
             });
     }
