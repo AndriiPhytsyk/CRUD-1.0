@@ -19,9 +19,9 @@ module.exports = {
   },
 
   update(req,res) {
-    let {title,url,body,id} = req.body;
+    let {title,url,description,id} = req.body;
 
-    let article = {title,url,body,id};
+    let article = {title,url,description,id};
 
     if(!title) {
       return res.badRequest({err: "invalid title"})
@@ -29,7 +29,7 @@ module.exports = {
     if(!url) {
       return res.badRequest({err: "invalid url"})
     }
-    if(!body) {
+    if(!description) {
       return res.badRequest({err: "invalid description"})
     }
     if(!title) {
@@ -45,9 +45,8 @@ module.exports = {
   },
 
   creat(req,res) {
-    let {title, body, url} = req.body;
-
-    Articles.create({title, body, url})
+    let {title, description, url} = req.body;
+    Articles.create({title, description, url})
       .then(() => res.ok(200));
   },
 
