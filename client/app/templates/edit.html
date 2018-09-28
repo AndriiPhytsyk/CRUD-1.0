@@ -34,10 +34,10 @@
                         <span ng-show="articleEditForm.description.$error.required">Description is required.</span>
                     </div>
                 </div>
-
+                <p id="msg" style="color:red"></p>
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button ng-disabled="articleEditForm.$invalid" ng-click="edit(post, articleForm)" type="submit"
+                        <button ng-click="edit(post, articleEditForm)" type="submit"
                                 class="btn btn-success">EDIT POST
                         </button>
                         <a href="#/" class="btn btn-default">BACK</a>

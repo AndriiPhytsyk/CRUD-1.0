@@ -57,9 +57,9 @@ myApp.controller("editCtrl", function ($scope, $http, $routeParams, $location) {
 });
 
 myApp.controller("createCtrl", function ($scope, $http, $location) {
-    $scope.save = function (article, articleForm) {
+    $scope.save = function (article, articleEditForm) {
         console.log(articleForm);
-        if(articleForm.$invalid) {
+        if(articleEditForm.$invalid) {
             let msg = document.querySelector("#msg");
             msg.innerText = "Please fill all fields"
         } else {
