@@ -19,11 +19,9 @@ module.exports = {
   },
 
   update(req,res) {
-    let article = {};
-    let title = req.param('title');
-    let url = req.param('url');
-    let body = req.param('body');
-    let id = req.param('id');
+    let {title,url,body,id} = req.body;
+
+    let article = {title,url,body,id};
 
     if(!title) {
       return res.badRequest({err: "invalid title"})
@@ -38,9 +36,6 @@ module.exports = {
       return res.badRequest({err: "invalid title"})
     }
 
-    article.title = title;
-    article.url = url;
-    article.body = body;
 
     Articles.update({id}, article)
       .then(data => {
@@ -50,9 +45,8 @@ module.exports = {
   },
 
   creat(req,res) {
-    let title = req.body.title;
-    let body = req.body.description;
-    let url = req.body.url;
+    let {title, body, url} = req.body;
+
     Articles.create({title, body, url})
       .then(() => res.ok(200));
   },
