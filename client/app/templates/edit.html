@@ -6,22 +6,32 @@
                 <div class="form-group">
                     <label for="inputTitle" class="col-lg-2 control-label">Title</label>
                     <div>
-                        <input ng-model="post.title" type="text" class="form-control" id="inputTitle"
+                        <input name="title" ng-model="post.title" type="text" class="form-control" id="inputTitle"
                                placeholder="Title" required>
+                    </div>
+                    <div style="color:red" ng-show="articleEditForm.title.$touched && articleEditForm.title.$invalid">
+                        <span ng-show="articleEditForm.title.$error.required">Title is required.</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputUrl" class="col-lg-2 control-label">Title</label>
+                    <label for="inputUrl" class="col-lg-2 control-label">Url</label>
                     <div>
-                        <input ng-model="post.url" type="text" class="form-control" id="inputUrl" placeholder="Url"
+                        <input name="url" ng-model="post.url" type="url" class="form-control" id="inputUrl" placeholder="Url"
                                required>
+                    </div>
+                    <div style="color:red" ng-show="articleEditForm.url.$touched && articleEditForm.url.$invalid">
+                        <span ng-show="articleEditForm.url.$error.required">Url is required.</span>
+                        <span ng-show="articleEditForm.url.$error.url">Please enter a valid url.</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="textArea" class="col-lg-2 control-label">Description</label>
                     <div>
-                        <textarea ng-model="post.body" class="form-control" id="textArea" rows="3"
+                        <textarea name="description" ng-model="post.body" class="form-control" id="textArea" rows="3"
                                   placeholder="Description" required></textarea>
+                    </div>
+                    <div style="color:red" ng-show="articleEditForm.description.$touched && articleEditForm.description.$invalid">
+                        <span ng-show="articleEditForm.description.$error.required">Description is required.</span>
                     </div>
                 </div>
 

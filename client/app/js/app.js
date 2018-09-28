@@ -54,10 +54,18 @@ myApp.controller("editCtrl", function ($scope, $http, $routeParams, $location) {
 
 myApp.controller("createCtrl", function ($scope, $http, $location) {
     $scope.save = function (article) {
+
+        if(!article || !article.title || !article.description || !article.url) {
+            let msg = document.querySelector("#msg");
+            console.log(msg)
+            msg.innerText = "Please fill all fields"
+        } else {
+
         console.log("article", article);
         $http.post('http://localhost:1337/list', article).then(function () {
             $location.path("/")
             });
+    }
     }
 });
 

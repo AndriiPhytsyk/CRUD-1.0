@@ -1,30 +1,46 @@
 <div class="row" ng-controller="createCtrl">
     <div class="col-6">
-        <form class="form-horizontal"  name="articleForm">
+        <form class="form-horizontal" name="articleForm">
             <fieldset>
                 <h4>Add Post</h4>
                 <div class="form-group">
                     <label for="inputTitle" class="control-label">Title</label>
                     <div>
-                        <input ng-model="article.title" type="text" class="form-control" id="inputTitle" placeholder="Title" required>
+                        <input name="title" ng-model="article.title" type="text" class="form-control" id="inputTitle"
+                               placeholder="Title" required>
+                    </div>
+                    <div style="color:red" ng-show="articleForm.title.$touched && articleForm.title.$invalid">
+                        <span ng-show="articleForm.title.$error.required">Title is required.</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputTitle" class="control-label">Url</label>
                     <div>
-                        <input ng-model="article.url" type="text" class="form-control" id="inputUrl" placeholder="Url" required>
+                        <input name ="url" ng-model="article.url" type="url" class="form-control" id="inputUrl" placeholder="Url"
+                               required>
+                    </div>
+                    <div style="color:red" ng-show="articleForm.url.$touched && articleForm.url.$invalid">
+                        <span ng-show="articleForm.url.$error.required">Url is required.</span>
+                        <span ng-show="articleForm.url.$error.url">Please enter a valid url.</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="textArea" class="control-label">Description</label>
                     <div>
-                        <textarea ng-model="article.description" class="form-control" id="textArea" rows="3" placeholder="Description" required></textarea>
+                        <textarea name="description" ng-model="article.description" class="form-control" id="textArea" rows="3"
+                                  placeholder="Description" required></textarea>
+                    </div>
+                    <div style="color:red" ng-show="articleForm.description.$touched && articleForm.description.$invalid">
+                        <span ng-show="articleForm.description.$error.required">Description is required.</span>
                     </div>
                 </div>
+                <p id="msg" style="color:red"></p>
 
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button ng-disabled ="articleForm.$invalid" ng-click="save(article, articleForm)" type="submit" id="submit" class="btn btn-success">ADD POST</button>
+                        <button  ng-click="save(article, articleForm)" type="submit"
+                                id="submit" class="btn btn-success">ADD POST
+                        </button>
 
                         <a href="#/" class="btn btn-default">BACK</a>
                     </div>
