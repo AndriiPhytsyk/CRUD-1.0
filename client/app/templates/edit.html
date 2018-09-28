@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="textArea" class="col-lg-2 control-label">Description</label>
                     <div>
-                        <textarea ng-model="post.body" class="form-control" id="textArea" rows="3"
+                        <textarea ng-model="post.description" class="form-control" id="textArea" rows="3"
                                   placeholder="Description" required></textarea>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
             <img class="card-img-top" src={{post.url}} alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{post.title}}</h5>
-                <p class="card-text">{{post.body}}</p>
+                <p class="card-text">{{post.description}}</p>
             </div>
         </div>
     </div>
