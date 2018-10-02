@@ -7,31 +7,37 @@
                     <label for="inputTitle" class="control-label">Title</label>
                     <div>
                         <input name="title" ng-model="article.title" type="text" class="form-control" id="inputTitle"
-                               placeholder="Title" required>
+                               placeholder="Title" required ng-maxlength="40" ng-minlength="2">
                     </div>
                     <div style="color:red" ng-show="articleForm.title.$touched && articleForm.title.$invalid">
                         <span ng-show="articleForm.title.$error.required">Title is required.</span>
+                        <span ng-show="articleForm.title.$error.minlength">Min length is 2 symbols.</span>
+                        <span ng-show="articleForm.title.$error.maxlength">Max length is 40 symbols.</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputTitle" class="control-label">Url</label>
                     <div>
                         <input name ="url" ng-model="article.url" type="url" class="form-control" id="inputUrl" placeholder="Url"
-                               required>
+                               required ng-maxlength="100" ng-minlength="2" ng-change="test()">
                     </div>
                     <div style="color:red" ng-show="articleForm.url.$touched && articleForm.url.$invalid">
                         <span ng-show="articleForm.url.$error.required">Url is required.</span>
                         <span ng-show="articleForm.url.$error.url">Please enter a valid url.</span>
+                        <span ng-show="articleForm.url.$error.minlength">Min length is 2 symbols.</span>
+                        <span ng-show="articleForm.url.$error.maxlength">Max length is 100 symbols.</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="textArea" class="control-label">Description</label>
                     <div>
                         <textarea name="description" ng-model="article.description" class="form-control" id="textArea" rows="3"
-                                  placeholder="Description" required></textarea>
+                                  placeholder="Description" required ng-maxlength="1140" ng-minlength="2"></textarea>
                     </div>
                     <div style="color:red" ng-show="articleForm.description.$touched && articleForm.description.$invalid">
                         <span ng-show="articleForm.description.$error.required">Description is required.</span>
+                        <span ng-show="articleForm.description.$error.minlength">Min length is 2 symbols.</span>
+                        <span ng-show="articleForm.description.$error.maxlength">Max length is 1140 symbols.</span>
                     </div>
                 </div>
                 <p id="msg" style="color:red"></p>
@@ -48,9 +54,9 @@
             </fieldset>
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" ng-if="article">
         <div class="card" style="margin-top:60px; width:18rem;">
-            <img class="card-img-top" src={{article.url}} alt="Card image cap">
+            <img ng-if="result" class="card-img-top" src={{article.url}} alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{article.title}}</h5>
                 <p class="card-text">{{article.description}}</p>
